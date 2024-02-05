@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSV to HTML Table</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+      }
+      table {
+        border-collapse: collapse;
+        margin: 20px;
+      }
+      td,
+      th {
+        border: 1px solid white;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="data-table"></table>
+
+    <script>
+      // Load CSV file using fetch API
+      fetch("Final_DSr_final1.csv")
+        .then((response) => response.text())
+        .then((csv) => {
+          // Parse CSV to JSON
+          const lines = csv.split("\n");
+          const headers = lines[0].split(",");
+          const rows = lines.slice(1).map((line) => {
+            const values = line.split(",");
+            return headers.reduce(
+              (obj, key, i) => ({ ...obj, [key]: values[i] }),
+              {}
+            );
+          });
+
+          // Generate HTML table
+          const table = document.getElementById("data-table");
+          table.innerHTML = `
+          <thead>
+            <tr>${headers.map((header) => `<th>${header}</th>`).join("")}</tr>
+          </thead>
+          <tbody>
+            ${rows
+              .map(
+                (row) => `
+              <tr>${headers
+                .map((header) => `<td>${row[header]}</td>`)
+                .join("")}</tr>
+            `
+              )
+              .join("")}
+          </tbody>
+        `;
+        })
+        .catch((error) => console.error(error));
+    </script>
+  </body>
+</html>

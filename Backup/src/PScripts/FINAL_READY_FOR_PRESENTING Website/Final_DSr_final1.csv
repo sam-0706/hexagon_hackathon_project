@@ -1,0 +1,14 @@
+﻿WTU_ID,60
+WTU_name,Indus
+Ice_Volume_WT_km3,2446.324141
+Ice_Area_WT_km2,28209.61625
+Meltwater_Yield_WTU_km3yr,35.45395905
+Future_End_Point,2091
+Type,perennial river
+scarcity,0.028930823
+scarcity_status,Yes
+demtot,0.758314564
+dem_irr,0.911159789
+dem_ind,0.685712658
+dem_dom,0.593318772
+dem_nat,0.843067039

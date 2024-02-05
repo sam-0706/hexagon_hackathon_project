@@ -1,0 +1,2 @@
+﻿WTU_ID,WTU_name,Ice_Volume_WT_km3,Ice_Area_WT_km2,Meltwater_Yield_WTU_km3yr,Future_End_Point,Type,scarcity,scarcity_status,demtot,dem_irr,dem_ind,dem_dom,dem_nat
+60,Indus,2446.324141,28209.61625,35.45395905,2091,perennial river,0.028930823,Yes,0.758314564,0.911159789,0.685712658,0.593318772,0.843067039

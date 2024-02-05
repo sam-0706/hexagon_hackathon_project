@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      function getCoordinates(event) {
+        var x = event.clientX;
+        var y = event.clientY;
+        var latLong = pixelToLatLong(x, y);
+        var latitude = latLong[0];
+        var longitude = latLong[1];
+        var url = constructUrl(latitude, longitude);
+        window.location.href = url;
+      }
+
+      function pixelToLatLong(x, y) {
+        // TODO: Implement this function to convert pixel coordinates to latitude and longitude
+        return [0, 0];
+      }
+
+      function constructUrl(latitude, longitude) {
+        // Define the latitudes and longitudes for each HTML page
+        var page1Lat = 31.15;
+        var page1Long = 81.4;
+        var page2Lat = 32.5;
+        var page2Long = 75.0;
+
+        // Check if the clicked point is near the first area
+        if (
+          latitude > page1Lat - 1 &&
+          latitude < page1Lat + 1 &&
+          longitude > page1Long - 1 &&
+          longitude < page1Long + 1
+        ) {
+          return "indus.html";
+        }
+
+        // Check if the clicked point is near the second area
+        if (
+          latitude > page2Lat - 1 &&
+          latitude < page2Lat + 1 &&
+          longitude > page2Long - 1 &&
+          longitude < page2Long + 1
+        ) {
+          return "mohenjo-daro.html";
+        }
+
+        // If the clicked point is not near any of the areas, return a default URL
+        return "indus.html";
+      }
+
+      var url = constructUrl(31.15, 81.4);
+    </script>
+    <title>Global Level</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+      }
+      #coordinates {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body onclick="getCoordinates(event)">
+    <script src="./main.js"></script>
+    <div id="coordinates"></div>
+
+    <area shape="circle" coords="31.15, 81.40,5" alt="sam" />
+    <area shape="circle" coords="649,161,5" alt="sam" />
+
+    <map name="worldmap">
+      <area shape="rect" coords="290,172,333,250" alt="Phone" />
+      <area shape="circle" coords="337,300,44" alt="Cup of coffee" />
+    </map>
+  </body>
+</html>
